@@ -744,12 +744,12 @@ mod test {
         assert_eq!(existing[0].original_deck_id, DeckId(1));
 
         // and generate cards for any cloze deletions
-        note.fields[0] = "{{c1::foo}} {{c2::bar}} {{c3::baz}} {{c0::quux}} {{c501::over}}".into();
+        note.fields[0] = "{{c1::foo}} {{c2::bar}} {{c3::baz}} {{c0::quux}} {{c5001::over}}".into();
         col.update_note(&mut note)?;
         let existing = col.storage.existing_cards_for_note(note.id)?;
         let mut ords = existing.iter().map(|a| a.ord).collect::<Vec<_>>();
         ords.sort_unstable();
-        assert_eq!(ords, vec![0, 1, 2, 499]);
+        assert_eq!(ords, vec![0, 1, 2, 4999]);
 
         Ok(())
     }

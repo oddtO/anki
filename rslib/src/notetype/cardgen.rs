@@ -166,7 +166,7 @@ impl<N: Deref<Target = Notetype>> CardGenContext<N> {
         let set = cloze_number_in_fields(note.fields());
         set.into_iter()
             .filter_map(|cloze_ord| {
-                let card_ord = cloze_ord.saturating_sub(1).min(499);
+                let card_ord = cloze_ord.saturating_sub(1).min(4999);
                 if extracted.existing_ords.contains(&(card_ord as u32)) {
                     None
                 } else {
